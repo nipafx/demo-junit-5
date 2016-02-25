@@ -1,4 +1,4 @@
-package org.codefx.demo.junit5;
+package org.codefx.demo.junit5.basics;
 
 import org.junit.gen5.api.Disabled;
 import org.junit.gen5.api.Test;

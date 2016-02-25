@@ -1,4 +1,4 @@
-package org.codefx.demo.junit5;// NOT_PUBLISHED
+package org.codefx.demo.junit5.basics;// NOT_PUBLISHED
 
 import org.junit.gen5.api.BeforeEach;
 import org.junit.gen5.api.Nested;

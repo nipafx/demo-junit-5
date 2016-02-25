@@ -1,9 +1,10 @@
-package org.codefx.demo.junit5;
+package org.codefx.demo.junit5.basics;
 
 import org.junit.gen5.api.AfterAll;
 import org.junit.gen5.api.AfterEach;
 import org.junit.gen5.api.BeforeAll;
 import org.junit.gen5.api.BeforeEach;
+import org.junit.gen5.api.Disabled;
 import org.junit.gen5.api.Test;
 
 import static org.junit.gen5.api.Assertions.assertNotEquals;
@@ -11,8 +12,6 @@ import static org.junit.gen5.api.Assertions.assertTrue;
 import static org.junit.gen5.api.Assumptions.assumeTrue;
 
 class Lifecycle {
-
-	boolean value = true;
 
 	@BeforeAll
 	static void initializeExternalResources() {
@@ -27,15 +26,21 @@ class Lifecycle {
 	@Test
 	void someTest() {
 		System.out.println("Running some test...");
-		assertTrue(value);
+		assertTrue(true);
 	}
 
 	@Test
 	void otherTest() {
-		assumeTrue(value);
+		assumeTrue(true);
 
 		System.out.println("Running another test...");
 		assertNotEquals(1, 42, "Why wouldn't these be the same?");
+	}
+
+	@Test
+	@Disabled
+	void disabledTest() {
+		System.exit(1);
 	}
 
 	@AfterEach
