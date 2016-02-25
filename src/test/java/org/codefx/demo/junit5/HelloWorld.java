@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 /**
  * Typical "Hello World"; also shows that Mockito and AssertJ are compatible.
  */
-class HelloWorldTest {
+class HelloWorld {
 
 	@Test
 	void helloJUnit5() {
@@ -26,7 +26,7 @@ class HelloWorldTest {
 				.thenReturn(true)
 				.getMock();
 		// fails because we just mocked 'mockedList.isEmpty' to return true
-		assertThat(mockedList).isNotEmpty();
+		assertThat(mockedList).isEmpty();
 	}
 
 }
