@@ -31,7 +31,7 @@
 			<groupId>org.junit</groupId>
 			<artifactId>junit5-api</artifactId>
 			<version>${junit5-version}</version>
-			<scope>test</scope>
+			<scope>compile, test</scope>
 		</dependency>
 
 		<!-- to execute v5-tests as part of a v4-run, we need these two artifacts -->
