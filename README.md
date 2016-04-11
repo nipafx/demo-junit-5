@@ -10,7 +10,8 @@ which runs all tests
 [`Lifecycle`](https://github.com/CodeFX-org/demo-junit-5/blob/master/src/test/java/org/codefx/demo/junit5/basics/Lifecycle.java)
 is a good introduction, for more details see the other classes in
 [`org.codefx.demo.junit5.basics`](https://github.com/CodeFX-org/demo-junit-5/blob/master/src/test/java/org/codefx/demo/junit5/basics)
+* [Architecture](http://blog.codefx.org/design/architecture/junit-5-architecture/) (has no code samples)
+* [Extension](http://blog.codefx.org/design/architecture/junit-5-extension-model/): implemented in [`main`](https://github.com/CodeFX-org/demo-junit-5/tree/master/src/main/java/org/codefx/demo/junit5) and used in [`test`](https://github.com/CodeFX-org/demo-junit-5/tree/master/src/test/java/org/codefx/demo/junit5/extensions)
 * Conditions
 * Injection
-* Extension
 * ...
