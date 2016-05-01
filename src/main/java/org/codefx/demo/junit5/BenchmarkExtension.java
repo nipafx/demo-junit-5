@@ -11,10 +11,10 @@ import org.junit.gen5.api.extension.TestExtensionContext;
 
 import static java.lang.System.currentTimeMillis;
 
-public class BenchmarkCondition
+public class BenchmarkExtension
 		implements BeforeAllExtensionPoint, BeforeEachExtensionPoint, AfterEachExtensionPoint, AfterAllExtensionPoint {
 
-	private static final Namespace NAMESPACE = Namespace.of("BenchmarkCondition");
+	private static final Namespace NAMESPACE = Namespace.of("BenchmarkExtension");
 
 	@Override
 	public void beforeAll(ContainerExtensionContext context) {

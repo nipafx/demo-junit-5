@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 
 @Target({ ElementType.TYPE, ElementType.METHOD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@ExtendWith(BenchmarkCondition.class)
+@ExtendWith(BenchmarkExtension.class)
 public @interface IntegrationTest { }
