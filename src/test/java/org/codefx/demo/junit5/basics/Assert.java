@@ -66,7 +66,7 @@ class Assert {
 	}
 
 	private void throwing() throws Exception {
-		throw new Exception("Because I can!");
+		throw new RuntimeException("Because I can!");
 	}
 
 	private static class Address {

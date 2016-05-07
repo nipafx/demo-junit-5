@@ -4,13 +4,10 @@ import org.codefx.demo.junit5.DisabledOnOs;
 import org.codefx.demo.junit5.OS;
 import org.codefx.demo.junit5.TestExceptOnOs;
 import org.junit.gen5.api.Test;
-import org.junit.gen5.junit4.runner.JUnit5;
-import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(JUnit5.class)
-public class DisabledOnOsTest {
+class DisabledOnOsTest {
 
 	@Test
 	void runsOnAllOS() {
