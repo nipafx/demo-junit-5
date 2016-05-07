@@ -34,6 +34,14 @@
 			<scope>compile, test</scope>
 		</dependency>
 
+		<!-- writing extensions -->
+		<dependency>
+			<groupId>org.junit</groupId>
+			<artifactId>junit-commons</artifactId>
+			<version>${junit5-version}</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!-- to execute v5-tests as part of a v4-run, we need these two artifacts -->
 		<dependency>
 			<!-- contains the engine that actually runs the v5-tests -->
