@@ -1,6 +1,6 @@
 package org.codefx.demo.junit5;
 
-import org.junit.gen5.api.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ class HelloWorld {
 						.isEmpty())
 				.thenReturn(true)
 				.getMock();
-		// fails because we just mocked 'mockedList.isEmpty' to return true
+		// passes because we just mocked 'mockedList.isEmpty' to return true
 		assertThat(mockedList).isEmpty();
 	}
 

@@ -1,10 +1,10 @@
 package org.codefx.demo.junit5;
 
-import org.junit.gen5.api.extension.ConditionEvaluationResult;
-import org.junit.gen5.api.extension.ExtensionContext;
-import org.junit.gen5.api.extension.TestExecutionCondition;
-import org.junit.gen5.api.extension.TestExtensionContext;
-import org.junit.gen5.commons.util.AnnotationUtils;
+import org.junit.jupiter.api.extension.ConditionEvaluationResult;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.TestExecutionCondition;
+import org.junit.jupiter.api.extension.TestExtensionContext;
+import org.junit.platform.commons.util.AnnotationUtils;
 
 import java.util.Arrays;
 import java.util.Optional;

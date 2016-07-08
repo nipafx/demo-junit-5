@@ -1,10 +1,10 @@
 package org.codefx.demo.junit5.basics;// NOT_PUBLISHED
 
-import org.junit.gen5.api.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.gen5.api.Assumptions.assumeFalse;
-import static org.junit.gen5.api.Assumptions.assumeTrue;
-import static org.junit.gen5.api.Assumptions.assumingThat;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 class Assume {
 

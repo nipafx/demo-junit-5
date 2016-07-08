@@ -3,7 +3,7 @@ package org.codefx.demo.junit5.extensions;
 import org.codefx.demo.junit5.DisabledOnOs;
 import org.codefx.demo.junit5.OS;
 import org.codefx.demo.junit5.TestExceptOnOs;
-import org.junit.gen5.api.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertTrue;
 

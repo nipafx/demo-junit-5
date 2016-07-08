@@ -1,19 +1,19 @@
 package org.codefx.demo.junit5;
 
-import org.junit.gen5.api.extension.ContainerExtensionContext;
-import org.junit.gen5.api.extension.ExceptionHandlerExtensionPoint;
-import org.junit.gen5.api.extension.ExtensionContext;
-import org.junit.gen5.api.extension.ExtensionContext.Namespace;
-import org.junit.gen5.api.extension.TestExtensionContext;
+import org.junit.jupiter.api.extension.ContainerExtensionContext;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
+import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
+import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public class CollectExceptionExtension implements ExceptionHandlerExtensionPoint {
+public class CollectExceptionExtension implements TestExecutionExceptionHandler {
 
-	private static final Namespace NAMESPACE = Namespace.of("org", "codefx", "CollectExceptions");
+	private static final Namespace NAMESPACE = Namespace.create("org", "codefx", "CollectExceptions");
 	private static final String THROWN_EXCEPTIONS_KEY = "THROWN_EXCEPTIONS_KEY";
 
 	public static Stream<Exception> getThrownExceptions(ExtensionContext context) {
@@ -39,7 +39,8 @@ public class CollectExceptionExtension implements ExceptionHandlerExtensionPoint
 	}
 
 	@Override
-	public void handleException(TestExtensionContext context, Throwable throwable) throws Throwable {
+	public void handleTestExecutionException(TestExtensionContext context, Throwable throwable)
+			throws Throwable {
 		if (throwable instanceof Exception) {
 			Exception exception = (Exception) throwable;
 			getThrown(context).add(exception);
@@ -47,5 +48,4 @@ public class CollectExceptionExtension implements ExceptionHandlerExtensionPoint
 
 		throw throwable;
 	}
-
 }

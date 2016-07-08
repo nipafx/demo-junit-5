@@ -1,20 +1,20 @@
 package org.codefx.demo.junit5;
 
-import org.junit.gen5.api.extension.AfterAllExtensionPoint;
-import org.junit.gen5.api.extension.AfterEachExtensionPoint;
-import org.junit.gen5.api.extension.BeforeAllExtensionPoint;
-import org.junit.gen5.api.extension.BeforeEachExtensionPoint;
-import org.junit.gen5.api.extension.ContainerExtensionContext;
-import org.junit.gen5.api.extension.ExtensionContext;
-import org.junit.gen5.api.extension.ExtensionContext.Namespace;
-import org.junit.gen5.api.extension.TestExtensionContext;
+import org.junit.jupiter.api.extension.AfterAllCallback;
+import org.junit.jupiter.api.extension.AfterEachCallback;
+import org.junit.jupiter.api.extension.BeforeAllCallback;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.ContainerExtensionContext;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
+import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import static java.lang.System.currentTimeMillis;
 
 public class BenchmarkExtension
-		implements BeforeAllExtensionPoint, BeforeEachExtensionPoint, AfterEachExtensionPoint, AfterAllExtensionPoint {
+		implements BeforeAllCallback, BeforeEachCallback, AfterEachCallback, AfterAllCallback {
 
-	private static final Namespace NAMESPACE = Namespace.of("BenchmarkExtension");
+	private static final Namespace NAMESPACE = Namespace.create("BenchmarkExtension");
 
 	@Override
 	public void beforeAll(ContainerExtensionContext context) {
@@ -53,7 +53,9 @@ public class BenchmarkExtension
 	}
 
 	private static boolean shouldBeBenchmarked(ExtensionContext context) {
-		return context.getElement().isAnnotationPresent(Benchmark.class);
+		return context.getElement()
+				.map(el -> el.isAnnotationPresent(Benchmark.class))
+				.orElse(false);
 	}
 
 	private static void writeCurrentTime(ExtensionContext context, LaunchTimeKey key) {
@@ -61,7 +63,7 @@ public class BenchmarkExtension
 	}
 
 	private static long loadLaunchTime(ExtensionContext context, LaunchTimeKey key) {
-		return (Long) context.getStore(NAMESPACE).remove(key);
+		return context.getStore(NAMESPACE).remove(key, long.class);
 	}
 
 	private static void print(String unit, String displayName, long runtime) {

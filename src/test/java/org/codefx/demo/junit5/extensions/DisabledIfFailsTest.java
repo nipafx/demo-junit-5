@@ -2,16 +2,13 @@ package org.codefx.demo.junit5.extensions;
 
 import org.codefx.demo.junit5.CollectExceptions;
 import org.codefx.demo.junit5.DisabledIfTestFailedWith;
-import org.junit.gen5.api.Test;
-import org.junit.gen5.junit4.runner.JUnit5;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertFalse;
 
-@RunWith(JUnit5.class)
 @CollectExceptions
 @DisabledIfTestFailedWith(RuntimeException.class)
-public class DisabledIfFailsTest {
+class DisabledIfFailsTest {
 
 	private static boolean failedFirst = false;
 
@@ -24,6 +21,11 @@ public class DisabledIfFailsTest {
 
 	@Test
 	void b_disableIfOtherFailedFirst() {
+
+		/*
+		 * TODO it looks like this does not work either.
+		 */
+
 		System.out.println("Nobody failed yet! (Right?)");
 		assertFalse(failedFirst);
 	}

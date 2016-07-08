@@ -1,6 +1,6 @@
 package org.codefx.demo.junit5;
 
-import org.junit.gen5.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

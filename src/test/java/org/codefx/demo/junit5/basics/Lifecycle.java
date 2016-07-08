@@ -1,15 +1,15 @@
 package org.codefx.demo.junit5.basics;
 
-import org.junit.gen5.api.AfterAll;
-import org.junit.gen5.api.AfterEach;
-import org.junit.gen5.api.BeforeAll;
-import org.junit.gen5.api.BeforeEach;
-import org.junit.gen5.api.Disabled;
-import org.junit.gen5.api.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.gen5.api.Assertions.assertNotEquals;
-import static org.junit.gen5.api.Assertions.assertTrue;
-import static org.junit.gen5.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class Lifecycle {
 
@@ -34,7 +34,7 @@ class Lifecycle {
 		assumeTrue(true);
 
 		System.out.println("Running another test...");
-		assertNotEquals(1, 42, "Why wouldn't these be the same?");
+		assertNotEquals(1, 42, "Why would these be the same?");
 	}
 
 	@Test

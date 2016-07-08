@@ -1,11 +1,11 @@
 package org.codefx.demo.junit5.basics;// NOT_PUBLISHED
 
-import org.junit.gen5.api.BeforeEach;
-import org.junit.gen5.api.Nested;
-import org.junit.gen5.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.gen5.api.Assertions.assertEquals;
-import static org.junit.gen5.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Nest {
 	

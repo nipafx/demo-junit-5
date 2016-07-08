@@ -1,9 +1,9 @@
 package org.codefx.demo.junit5;
 
-import org.junit.gen5.junit4.runner.JUnit5;
-import org.junit.gen5.junit4.runner.Packages;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.platform.runner.SelectPackages;
 import org.junit.runner.RunWith;
 
-@RunWith(JUnit5.class)
-@Packages({ "org.codefx.demo.junit5" })
+@RunWith(JUnitPlatform.class)
+@SelectPackages({ "org.codefx.demo.junit5" })
 public class TestWithJUnit5 { }
