@@ -30,7 +30,13 @@ public class LambdaTest {
 	}
 
 	@FunctionalInterface
-	public interface NamedTest extends MethodFinder {
+	public interface NamedTest extends ParameterNameFinder {
+
+		void execute(String name);
+
+	}
+
+	public interface ParameterNameFinder extends MethodFinder {
 
 		default String name() {
 			return parameterName(0);
@@ -41,8 +47,6 @@ public class LambdaTest {
 					.map(word -> toUpperCase(word.charAt(0)) + word.substring(1))
 					.collect(joining(" "));
 		}
-
-		void execute(String name);
 
 	}
 
