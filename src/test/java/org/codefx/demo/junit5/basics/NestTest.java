@@ -1,4 +1,4 @@
-package org.codefx.demo.junit5.basics;// NOT_PUBLISHED
+package org.codefx.demo.junit5.basics;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class Nest {
+class NestTest {
 	
 	int count = Integer.MIN_VALUE;
 	

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class Disable {
+class DisableTest {
 
 	@Test
 	@Disabled("Y U No Pass?!")

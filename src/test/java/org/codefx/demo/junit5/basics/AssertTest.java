@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.expectThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
-class Assert {
+class AssertTest {
 
 	@Test
 	void assertWithBoolean() {

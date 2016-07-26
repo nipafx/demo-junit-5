@@ -2,13 +2,10 @@ package org.codefx.demo.junit5.dynamic;
 
 import org.codefx.demo.junit5.LambdaTest;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@RunWith(JUnitPlatform.class)
-public class LambdaTestTest extends LambdaTest {
+class LambdaTestTest extends LambdaTest {
 
 	LambdaTestTest() {
 		λ(my_first_lambda_test -> {

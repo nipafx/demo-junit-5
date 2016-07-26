@@ -3,8 +3,6 @@ package org.codefx.demo.junit5.dynamic;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import java.util.List;
 
@@ -12,8 +10,7 @@ import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
-@RunWith(JUnitPlatform.class)
-public class DynamicTestTest {
+class DynamicTestTest {
 
 	@TestFactory
 	List<DynamicTest> registeredTests() {

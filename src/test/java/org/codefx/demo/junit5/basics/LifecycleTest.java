@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-class Lifecycle {
+class LifecycleTest {
 
 	@BeforeAll
 	static void initializeExternalResources() {

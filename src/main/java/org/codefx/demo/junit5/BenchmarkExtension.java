@@ -1,9 +1,9 @@
 package org.codefx.demo.junit5;
 
 import org.junit.jupiter.api.extension.AfterAllCallback;
-import org.junit.jupiter.api.extension.AfterEachCallback;
+import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
-import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.BeforeTestExecutionCallback;
 import org.junit.jupiter.api.extension.ContainerExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.TestExtensionContext;
 import static java.lang.System.currentTimeMillis;
 
 public class BenchmarkExtension
-		implements BeforeAllCallback, BeforeEachCallback, AfterEachCallback, AfterAllCallback {
+		implements BeforeAllCallback, BeforeTestExecutionCallback, AfterTestExecutionCallback, AfterAllCallback {
 
 	private static final Namespace NAMESPACE = Namespace.create("BenchmarkExtension");
 
@@ -25,7 +25,7 @@ public class BenchmarkExtension
 	}
 
 	@Override
-	public void beforeEach(TestExtensionContext context) {
+	public void beforeTestExecution(TestExtensionContext context)  {
 		if (!shouldBeBenchmarked(context))
 			return;
 
@@ -33,7 +33,7 @@ public class BenchmarkExtension
 	}
 
 	@Override
-	public void afterEach(TestExtensionContext context) {
+	public void afterTestExecution(TestExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
 			return;
 
@@ -63,7 +63,7 @@ public class BenchmarkExtension
 	}
 
 	private static long loadLaunchTime(ExtensionContext context, LaunchTimeKey key) {
-		return context.getStore(NAMESPACE).remove(key, long.class);
+		return context.getStore(NAMESPACE).get(key, long.class);
 	}
 
 	private static void print(String unit, String displayName, long runtime) {

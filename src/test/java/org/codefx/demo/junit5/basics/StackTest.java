@@ -1,4 +1,4 @@
-package org.codefx.demo.junit5.basics;// NOT_PUBLISHED
+package org.codefx.demo.junit5.basics;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.expectThrows;
  * that was taken from the <a href="http://junit-team.github.io/junit5/#nested-tests">JUnit 5 User Guide</a>. 
  */
 @DisplayName("A stack")
-class TestingAStack {
+class StackTest {
 
 	Stack<Object> stack;
 	boolean isRun = false;

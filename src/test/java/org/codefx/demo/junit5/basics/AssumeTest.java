@@ -1,4 +1,4 @@
-package org.codefx.demo.junit5.basics;// NOT_PUBLISHED
+package org.codefx.demo.junit5.basics;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
-class Assume {
+class AssumeTest {
 
 	@Test
 	void exitIfFalseIsTrue() {
