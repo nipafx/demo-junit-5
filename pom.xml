@@ -26,14 +26,6 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- to execute Jupiter-tests as part of a v4-run, we need these two artifacts -->
-		<dependency>
-			<!-- contains the engine that actually runs the Jupiter-tests -->
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.0.0-M2</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<!-- contains the runner that adapts Jupiter-tests for a v4-run -->
 			<groupId>org.junit.platform</groupId>
@@ -79,7 +71,14 @@
 					<dependency>
 						<groupId>org.junit.platform</groupId>
 						<artifactId>junit-platform-surefire-provider</artifactId>
-						<version>1.0.0-M1</version>
+						<version>1.0.0-M2</version>
+					</dependency>
+					<!-- to execute Jupiter-tests as part of a v4-run, we need this artifact -->
+					<dependency>
+						<!-- contains the engine that actually runs the Jupiter-tests -->
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>5.0.0-M2</version>
 					</dependency>
 				</dependencies>
 			</plugin>
