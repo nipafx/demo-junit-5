@@ -10,26 +10,27 @@ import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import static java.lang.System.currentTimeMillis;
+import static java.util.Collections.singletonMap;
 
-public class BenchmarkExtension
+class BenchmarkExtension
 		implements BeforeAllCallback, BeforeTestExecutionCallback, AfterTestExecutionCallback, AfterAllCallback {
 
-	private static final Namespace NAMESPACE = Namespace.create("BenchmarkExtension");
+	private static final Namespace NAMESPACE = Namespace.create("org", "codefx", "BenchmarkExtension");
 
 	@Override
 	public void beforeAll(ContainerExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
 			return;
 
-		writeCurrentTime(context, LaunchTimeKey.CLASS);
+		storeNowAsLaunchTime(context, LaunchTimeKey.CLASS);
 	}
 
 	@Override
-	public void beforeTestExecution(TestExtensionContext context)  {
+	public void beforeTestExecution(TestExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
 			return;
 
-		writeCurrentTime(context, LaunchTimeKey.TEST);
+		storeNowAsLaunchTime(context, LaunchTimeKey.TEST);
 	}
 
 	@Override
@@ -39,7 +40,7 @@ public class BenchmarkExtension
 
 		long launchTime = loadLaunchTime(context, LaunchTimeKey.TEST);
 		long runtime = currentTimeMillis() - launchTime;
-		print("Test", context.getDisplayName(), runtime);
+		report("Test", context, runtime);
 	}
 
 	@Override
@@ -48,8 +49,8 @@ public class BenchmarkExtension
 			return;
 
 		long launchTime = loadLaunchTime(context, LaunchTimeKey.CLASS);
-		long runtime = currentTimeMillis() - launchTime;
-		print("Test container", context.getDisplayName(), runtime);
+		long elapsedTime = currentTimeMillis() - launchTime;
+		report("Test container", context, elapsedTime);
 	}
 
 	private static boolean shouldBeBenchmarked(ExtensionContext context) {
@@ -58,7 +59,7 @@ public class BenchmarkExtension
 				.orElse(false);
 	}
 
-	private static void writeCurrentTime(ExtensionContext context, LaunchTimeKey key) {
+	private static void storeNowAsLaunchTime(ExtensionContext context, LaunchTimeKey key) {
 		context.getStore(NAMESPACE).put(key, currentTimeMillis());
 	}
 
@@ -66,8 +67,9 @@ public class BenchmarkExtension
 		return context.getStore(NAMESPACE).get(key, long.class);
 	}
 
-	private static void print(String unit, String displayName, long runtime) {
-		System.out.printf("%s '%s' took %d ms.%n", unit, displayName, runtime);
+	private static void report(String unit, ExtensionContext context, long elapsedTime) {
+		String message = String.format("%s '%s' took %d ms.", unit, context.getDisplayName(), elapsedTime);
+		context.publishReportEntry(singletonMap("Benchmark", message));
 	}
 
 	private enum LaunchTimeKey {
