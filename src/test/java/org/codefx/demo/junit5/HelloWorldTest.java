@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 /**
  * Typical "Hello World"; also shows that Mockito and AssertJ are compatible.
  */
-class HelloWorld {
+class HelloWorldTest {
 
 	@Test
 	void helloJUnit5() {
