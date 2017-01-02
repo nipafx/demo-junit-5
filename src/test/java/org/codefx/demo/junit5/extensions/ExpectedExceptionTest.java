@@ -2,8 +2,6 @@ package org.codefx.demo.junit5.extensions;
 
 import org.codefx.demo.junit5.Test;
 
-import static org.junit.Assert.fail;
-
 class ExpectedExceptionTest {
 
 	@org.junit.jupiter.api.Test

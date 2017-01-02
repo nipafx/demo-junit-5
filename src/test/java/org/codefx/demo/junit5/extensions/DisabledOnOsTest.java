@@ -5,7 +5,7 @@ import org.codefx.demo.junit5.OS;
 import org.codefx.demo.junit5.TestExceptOnOs;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DisabledOnOsTest {
 
