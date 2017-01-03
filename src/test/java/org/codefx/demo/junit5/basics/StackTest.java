@@ -21,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.expectThrows;
 class StackTest {
 
 	Stack<Object> stack;
-	boolean isRun = false;
 
 	@Test
 	@DisplayName("is instantiated with new Stack()")

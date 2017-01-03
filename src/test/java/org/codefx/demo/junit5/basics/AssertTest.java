@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 class AssertTest {
 
 	@Test
-	void assertWithBoolean() {
+	void assertWithBoolean_pass() {
 		assertTrue(true);
 		assertTrue(this::truism);
 
@@ -30,7 +30,7 @@ class AssertTest {
 	}
 
 	@Test
-	void assertWithComparison() {
+	void assertWithComparison_pass() {
 		List<String> expected = asList("element");
 		List<String> actual = new LinkedList<>(expected);
 
@@ -42,12 +42,12 @@ class AssertTest {
 	}
 
 	@Test
-	void failTheTest() {
+	void failTheTest_fail() {
 		fail("epicly");
 	}
 
 	@Test
-	void assertAllProperties() {
+	void assertAllProperties_fail() {
 		Address address = new Address("New City", "Some Street", "No");
 
 		assertAll("address",
@@ -58,10 +58,8 @@ class AssertTest {
 	}
 
 	@Test
-	void assertExceptions() {
-		assertThrows(Exception.class, this::throwing);
-
-		Exception exception = expectThrows(Exception.class, this::throwing);
+	void assertExceptions_pass() {
+		Exception exception = assertThrows(Exception.class, this::throwing);
 		assertEquals("Because I can!", exception.getMessage());
 	}
 
