@@ -17,6 +17,8 @@ class BenchmarkExtension
 
 	private static final Namespace NAMESPACE = Namespace.create("org", "codefx", "BenchmarkExtension");
 
+	// EXTENSION POINTS
+
 	@Override
 	public void beforeAll(ContainerExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
@@ -53,6 +55,8 @@ class BenchmarkExtension
 		report("Test container", context, elapsedTime);
 	}
 
+	// HELPER
+
 	private static boolean shouldBeBenchmarked(ExtensionContext context) {
 		return context.getElement()
 				.map(el -> el.isAnnotationPresent(Benchmark.class))
@@ -75,4 +79,5 @@ class BenchmarkExtension
 	private enum LaunchTimeKey {
 		CLASS, TEST
 	}
+
 }

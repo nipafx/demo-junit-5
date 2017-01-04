@@ -15,6 +15,7 @@ class TimeoutTest {
 	void quickTestWithoutTimeout_testPasses() {
 		assertTrue(true);
 	}
+
 	@Test(timeout = 0)
 	void quickTestWithoutZeroTimeout_testPasses() {
 		assertTrue(true);
