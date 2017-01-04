@@ -10,12 +10,12 @@ import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.expectThrows;
 
 /**
- * Demonstration of JUnit 5 features (particularly nesting and naming)
- * that was taken from the <a href="http://junit-team.github.io/junit5/#nested-tests">JUnit 5 User Guide</a>. 
+ * Demonstration of JUnit 5 features (particularly nesting and naming) that was taken from the
+ * <a href="http://junit.org/junit5/docs/5.0.0-M3/user-guide/#writing-tests-nested">JUnit 5 User Guide</a>.
  */
 @DisplayName("A stack")
 class StackTest {
@@ -25,7 +25,7 @@ class StackTest {
 	@Test
 	@DisplayName("is instantiated with new Stack()")
 	void isInstantiatedWithNew() {
-		new Stack<Object>();
+		new Stack<>();
 	}
 
 	@Nested
@@ -33,8 +33,8 @@ class StackTest {
 	class WhenNew {
 
 		@BeforeEach
-		void init() {
-			stack = new Stack<Object>();
+		void createNewStack() {
+			stack = new Stack<>();
 		}
 
 		@Test
@@ -46,13 +46,13 @@ class StackTest {
 		@Test
 		@DisplayName("throws EmptyStackException when popped")
 		void throwsExceptionWhenPopped() {
-			expectThrows(EmptyStackException.class, () -> stack.pop());
+			assertThrows(EmptyStackException.class, () -> stack.pop());
 		}
 
 		@Test
 		@DisplayName("throws EmptyStackException when peeked")
 		void throwsExceptionWhenPeeked() {
-			expectThrows(EmptyStackException.class, () -> stack.peek());
+			assertThrows(EmptyStackException.class, () -> stack.peek());
 		}
 
 		@Nested
@@ -62,13 +62,13 @@ class StackTest {
 			String anElement = "an element";
 
 			@BeforeEach
-			void init() {
+			void pushAnElement() {
 				stack.push(anElement);
 			}
 
 			@Test
 			@DisplayName("it is no longer empty")
-			void isEmpty() {
+			void isNotEmpty() {
 				assertFalse(stack.isEmpty());
 			}
 
@@ -87,4 +87,5 @@ class StackTest {
 			}
 		}
 	}
+
 }
