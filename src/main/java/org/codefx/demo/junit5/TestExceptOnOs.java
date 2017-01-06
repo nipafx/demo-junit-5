@@ -11,6 +11,6 @@ import java.lang.annotation.RetentionPolicy;
 @Test
 public @interface TestExceptOnOs {
 
-	OS[] value() default {};
+	OS[] value();
 
 }

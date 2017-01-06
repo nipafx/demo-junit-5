@@ -13,12 +13,13 @@ public class DisabledIfTestFailedCondition implements TestExecutionCondition {
 
 	@Override
 	public ConditionEvaluationResult evaluate(TestExtensionContext context) {
-		Optional<DisabledIfTestFailedWith> disabled =
-				AnnotationUtils.findAnnotation(context.getElement(), DisabledIfTestFailedWith.class);
-		if (disabled.isPresent())
-			return disableIfExceptionWasThrown(context, disabled.get().value());
+		Class<? extends Exception>[] exceptionTypes = context.getTestClass()
+				.flatMap(testClass -> AnnotationUtils.findAnnotation(testClass, DisabledIfTestFailedWith.class))
+				.orElseThrow(() -> new IllegalStateException("The extension should not be executed "
+						+ "unless the test class is annotated with @DisabledIfTestFailedWith."))
+				.value();
 
-		return ConditionEvaluationResult.enabled("");
+		return disableIfExceptionWasThrown(context, exceptionTypes);
 	}
 
 	private ConditionEvaluationResult disableIfExceptionWasThrown(

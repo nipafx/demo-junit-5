@@ -9,6 +9,6 @@ import java.lang.annotation.RetentionPolicy;
 @ExtendWith(OsCondition.class)
 public @interface DisabledOnOs {
 
-	OS[] value() default {};
+	OS[] value();
 
 }

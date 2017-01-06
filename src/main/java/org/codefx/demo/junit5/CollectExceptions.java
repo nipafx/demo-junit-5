@@ -6,5 +6,5 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-@ExtendWith(DisabledIfTestFailedCondition.class)
+@ExtendWith(CollectExceptionExtension.class)
 public @interface CollectExceptions { }

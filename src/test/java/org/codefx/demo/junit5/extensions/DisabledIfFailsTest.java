@@ -1,33 +1,29 @@
 package org.codefx.demo.junit5.extensions;
 
-import org.codefx.demo.junit5.CollectExceptions;
 import org.codefx.demo.junit5.DisabledIfTestFailedWith;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-@CollectExceptions
 @DisabledIfTestFailedWith(RuntimeException.class)
 class DisabledIfFailsTest {
 
-	private static boolean failedFirst = false;
+	private static boolean ONE_TEST_FAILED = false;
 
 	@Test
-	void a_throwException() {
-		System.out.println("I failed!");
-		failedFirst = true;
-		throw new RuntimeException();
+	void assertNoTestFailed_thenFail_1() {
+		assertThenFail();
 	}
 
 	@Test
-	void b_disableIfOtherFailedFirst() {
+	void assertNoTestFailed_thenFail_2() {
+		assertThenFail();
+	}
 
-		/*
-		 * TODO it looks like this does not work either.
-		 */
-
-		System.out.println("Nobody failed yet! (Right?)");
-		assertFalse(failedFirst);
+	private void assertThenFail() {
+		assertFalse(ONE_TEST_FAILED, "No test should run after another failed!");
+		ONE_TEST_FAILED = true;
+		throw new RuntimeException("I'm failing on purpose.");
 	}
 
 }
