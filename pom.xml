@@ -12,7 +12,7 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.0.0-M3</version>
+			<version>5.0.0-M4</version>
 			<!-- for writing tests "test" scope would suffice,
 				but extensions are defined in the project's "main" folder, so we need "compile" -->
 			<scope>compile</scope>
@@ -55,13 +55,13 @@
 					<dependency>
 						<groupId>org.junit.platform</groupId>
 						<artifactId>junit-platform-surefire-provider</artifactId>
-						<version>1.0.0-M3</version>
+						<version>1.0.0-M4</version>
 					</dependency>
 					<dependency>
 						<!-- contains the engine that actually runs the Jupiter-tests -->
 						<groupId>org.junit.jupiter</groupId>
 						<artifactId>junit-jupiter-engine</artifactId>
-						<version>5.0.0-M3</version>
+						<version>5.0.0-M4</version>
 					</dependency>
 				</dependencies>
 			</plugin>
