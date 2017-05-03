@@ -11,7 +11,7 @@ class LambdaTestTest extends LambdaTest {{
 		assertTrue(true);
 	});
 
-	λ(my_second_lambda_test -> {
+	λ(my_second_lambda_test_fails -> {
 		System.out.println("Hi, this is Lambda Test #2");
 		assertTrue(false);
 	});

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public interface Interface {
 
 	@Test
-	default void test() {
+	default void testFails() {
 		assertFalse(true);
 	}
 

@@ -4,11 +4,6 @@ import org.codefx.demo.junit5.Test;
 
 class ExpectedExceptionTest {
 
-	@org.junit.jupiter.api.Test
-	void __() {
-		// this is only here so that IntelliJ understands it's a JUnit 5 test class
-	}
-
 	@Test
 	void noExceptionExpected_throwsNoException_testPasses() {
 		// do nothing

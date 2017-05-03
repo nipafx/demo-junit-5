@@ -41,12 +41,12 @@ class AssertTest {
 	}
 
 	@Test
-	void failTheTest_fail() {
+	void failTheTest_fails() {
 		fail("epicly");
 	}
 
 	@Test
-	void assertAllProperties_fail() {
+	void assertAllProperties_testFails() {
 		Address address = new Address("New City", "Some Street", "No");
 
 		assertAll("address",

@@ -84,6 +84,10 @@ class PointTest {
 			return distance;
 		}
 
+		@Override
+		public String toString() {
+			return "| " + p1 + " - " + p2 + " | = " + distance;
+		}
 	}
 
 	private static class Point {
@@ -97,6 +101,11 @@ class PointTest {
 
 		double distanceTo(Point other) {
 			return sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
+		}
+
+		@Override
+		public String toString() {
+			return "(" + x + ", " + y + ")";
 		}
 	}
 
