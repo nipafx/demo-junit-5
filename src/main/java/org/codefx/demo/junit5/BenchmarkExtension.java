@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import static java.lang.System.currentTimeMillis;
 import static java.util.Collections.singletonMap;
+import static org.junit.platform.commons.support.AnnotationSupport.isAnnotated;
 
 class BenchmarkExtension
 		implements BeforeAllCallback, BeforeTestExecutionCallback, AfterTestExecutionCallback, AfterAllCallback {
@@ -59,7 +60,7 @@ class BenchmarkExtension
 
 	private static boolean shouldBeBenchmarked(ExtensionContext context) {
 		return context.getElement()
-				.map(el -> el.isAnnotationPresent(Benchmark.class))
+				.map(el -> isAnnotated(el, Benchmark.class))
 				.orElse(false);
 	}
 

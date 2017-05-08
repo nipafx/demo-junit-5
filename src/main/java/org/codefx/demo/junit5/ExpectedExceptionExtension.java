@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import java.util.Optional;
 
-import static org.junit.platform.commons.util.AnnotationUtils.findAnnotation;
+import static org.junit.platform.commons.support.AnnotationSupport.findAnnotation;
 
 public class ExpectedExceptionExtension implements TestExecutionExceptionHandler, AfterTestExecutionCallback {
 
@@ -57,7 +57,8 @@ public class ExpectedExceptionExtension implements TestExecutionExceptionHandler
 	}
 
 	private static Optional<? extends Class<? extends Throwable>> expectedException(ExtensionContext context) {
-		return findAnnotation(context.getElement(), Test.class)
+		return context.getElement()
+				.flatMap(el -> findAnnotation(el, Test.class))
 				.map(Test::expected)
 				.filter(exceptionType -> exceptionType != Test.None.class);
 	}

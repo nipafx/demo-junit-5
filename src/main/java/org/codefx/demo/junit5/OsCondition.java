@@ -5,13 +5,12 @@ import org.junit.jupiter.api.extension.ContainerExecutionCondition;
 import org.junit.jupiter.api.extension.ContainerExtensionContext;
 import org.junit.jupiter.api.extension.TestExecutionCondition;
 import org.junit.jupiter.api.extension.TestExtensionContext;
-import org.junit.platform.commons.util.AnnotationUtils;
 
 import java.lang.reflect.AnnotatedElement;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static org.junit.platform.commons.util.AnnotationUtils.findAnnotation;
+import static org.junit.platform.commons.support.AnnotationSupport.findAnnotation;
 
 public class OsCondition implements ContainerExecutionCondition, TestExecutionCondition {
 

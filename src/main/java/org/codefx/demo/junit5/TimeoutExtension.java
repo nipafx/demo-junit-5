@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import static java.lang.String.format;
 import static java.lang.System.currentTimeMillis;
-import static org.junit.platform.commons.util.AnnotationUtils.findAnnotation;
+import static org.junit.platform.commons.support.AnnotationSupport.findAnnotation;
 
 class TimeoutExtension implements BeforeTestExecutionCallback, AfterTestExecutionCallback {
 
@@ -40,7 +40,8 @@ class TimeoutExtension implements BeforeTestExecutionCallback, AfterTestExecutio
 	}
 
 	private Optional<Long> annotatedTimeout(TestExtensionContext context) {
-		return findAnnotation(context.getElement(), Test.class)
+		return context.getElement()
+				.flatMap(el -> findAnnotation(el, Test.class))
 				.map(Test::timeout)
 				.filter(timeout -> timeout != 0L);
 	}

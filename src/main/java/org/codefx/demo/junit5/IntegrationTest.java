@@ -1,5 +1,6 @@
 package org.codefx.demo.junit5;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.lang.annotation.ElementType;
@@ -9,5 +10,6 @@ import java.lang.annotation.Target;
 
 @Target({ ElementType.TYPE, ElementType.METHOD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@ExtendWith(BenchmarkExtension.class)
+@Test
+@Benchmark
 public @interface IntegrationTest { }

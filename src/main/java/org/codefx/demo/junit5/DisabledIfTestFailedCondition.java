@@ -4,17 +4,17 @@ import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestExecutionCondition;
 import org.junit.jupiter.api.extension.TestExtensionContext;
-import org.junit.platform.commons.util.AnnotationUtils;
 
 import java.util.Arrays;
-import java.util.Optional;
+
+import static org.junit.platform.commons.support.AnnotationSupport.findAnnotation;
 
 public class DisabledIfTestFailedCondition implements TestExecutionCondition {
 
 	@Override
 	public ConditionEvaluationResult evaluate(TestExtensionContext context) {
 		Class<? extends Exception>[] exceptionTypes = context.getTestClass()
-				.flatMap(testClass -> AnnotationUtils.findAnnotation(testClass, DisabledIfTestFailedWith.class))
+				.flatMap(testClass -> findAnnotation(testClass, DisabledIfTestFailedWith.class))
 				.orElseThrow(() -> new IllegalStateException("The extension should not be executed "
 						+ "unless the test class is annotated with @DisabledIfTestFailedWith."))
 				.value();
