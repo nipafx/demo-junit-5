@@ -16,6 +16,7 @@ is a good introduction, for more details see the other classes in
 * [Architecture](http://blog.codefx.org/design/architecture/junit-5-architecture/) (has no code samples)
 * Migration
 * [Dynamic Tests](http://blog.codefx.org/libraries/junit-5-dynamic-tests/): demonstrated in [`test/.../dynamic`](src/test/java/org/codefx/demo/junit5/dynamic)
+* [Parameterized Tests](http://blog.codefx.org/libraries/junit-5-parameterized-tests/): demonstrated in [`test/.../parameterized`](src/test/java/org/codefx/demo/junit5/parameterized), starting with [`HelloParams`](src/test/java/org/codefx/demo/junit5/parameterized/HelloParams.java)
 
 ## Extensions
 
