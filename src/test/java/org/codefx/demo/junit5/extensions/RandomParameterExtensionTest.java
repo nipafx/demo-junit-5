@@ -40,7 +40,7 @@ class RandomParameterExtensionTest {
 	@Test
 	void failingTest(SeededRandom r) {
 		System.out.println("Failing Test: " + r.seed());
-		throw new IllegalArgumentException("FAIL!");
+		throw new IndexOutOfBoundsException("I'm failing on purpose.");
 	}
 
 	@AfterEach

@@ -22,7 +22,7 @@ class TimeoutTest {
 	}
 
 	@Test(timeout = 10)
-	void longRunningTest_testFails() throws InterruptedException {
+	void longRunningTest_fails() throws InterruptedException {
 		Thread.sleep(100);
 	}
 

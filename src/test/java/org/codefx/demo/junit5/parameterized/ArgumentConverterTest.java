@@ -19,7 +19,7 @@ public class ArgumentConverterTest {
 
 	@ParameterizedTest
 	@ValueSource(strings = { "☺️" })
-	void testUtfCharConversion_fails(char c) {
+	void testUtfCharConversion_errors(char c) {
 		assertNotNull(c);
 	}
 

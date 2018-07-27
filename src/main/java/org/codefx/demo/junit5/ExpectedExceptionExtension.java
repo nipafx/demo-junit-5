@@ -4,6 +4,7 @@ import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
+import org.opentest4j.AssertionFailedError;
 
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class ExpectedExceptionExtension implements TestExecutionExceptionHandler
 		switch(loadExceptionStatus(context)) {
 			case WAS_NOT_THROWN:
 				expectedException(context)
-						.map(expected -> new IllegalStateException("Expected exception " + expected + " was not thrown."))
+						.map(expected -> new AssertionFailedError("Expected exception " + expected + " was not thrown.", expected, null))
 						.ifPresent(ex -> { throw ex; });
 			case WAS_THROWN_AS_EXPECTED:
 				// the exception was thrown as expected so there is nothing to do

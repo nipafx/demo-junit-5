@@ -23,7 +23,7 @@ class DisabledIfFailsTest {
 	private void assertThenFail() {
 		assertFalse(ONE_TEST_FAILED, "No test should run after another failed!");
 		ONE_TEST_FAILED = true;
-		throw new RuntimeException("I'm failing on purpose.");
+		throw new IndexOutOfBoundsException("I'm failing on purpose.");
 	}
 
 }

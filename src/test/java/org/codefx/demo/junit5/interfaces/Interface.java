@@ -2,13 +2,13 @@ package org.codefx.demo.junit5.interfaces;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public interface Interface {
 
 	@Test
-	default void testFails() {
-		assertFalse(true);
+	default void passes() {
+		assertTrue(true);
 	}
 
 }

@@ -16,23 +16,23 @@ class DisabledOnOsTest {
 
 	@Test
 	@DisabledOnOs(OS.NIX)
-	void doesNotRunOnLinux_testFails() {
+	void doesNotRunOnLinux_fails() {
 		assertTrue(false);
 	}
 
 	@Test
 	@DisabledOnOs(OS.WINDOWS)
-	void doesNotRunOnWindows_testFails() {
+	void doesNotRunOnWindows_fails() {
 		assertTrue(false);
 	}
 
 	@TestExceptOnOs(OS.NIX)
-	void doesNotRunOnLinuxEither_testFails() {
+	void doesNotRunOnLinuxEither_fails() {
 		assertTrue(false);
 	}
 
 	@TestExceptOnOs(OS.WINDOWS)
-	void doesNotRunOnWindowsEither_testFails() {
+	void doesNotRunOnWindowsEither_fails() {
 		assertTrue(false);
 	}
 

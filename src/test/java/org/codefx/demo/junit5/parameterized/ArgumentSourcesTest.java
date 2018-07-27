@@ -38,7 +38,7 @@ public class ArgumentSourcesTest {
 
 	@ParameterizedTest
 	@EnumSource(TimeUnit.class)
-	void withAllEnumValuesCrossProduct_fails(TimeUnit unit, TimeUnit unit2) {
+	void withAllEnumValuesCrossProduct_errors(TimeUnit unit, TimeUnit unit2) {
 		assertNotNull(unit);
 	}
 

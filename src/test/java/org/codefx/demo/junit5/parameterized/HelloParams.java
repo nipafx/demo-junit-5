@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class HelloParams {
 
 	@ParameterizedTest
-	void withoutSource(String word) {
+	void withoutSource_errors(String word) {
 		assertNotNull(word);
 	}
 

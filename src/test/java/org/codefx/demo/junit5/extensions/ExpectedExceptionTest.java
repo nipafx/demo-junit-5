@@ -5,23 +5,23 @@ import org.codefx.demo.junit5.Test;
 class ExpectedExceptionTest {
 
 	@Test
-	void noExceptionExpected_throwsNoException_testPasses() {
+	void noExceptionExpected_throwsNoException_passes() {
 		// do nothing
 	}
 
 	@Test
-	void noExceptionExpected_throwsException_testFails() {
-		throw new IllegalArgumentException();
+	void noExceptionExpected_throwsException_fails() {
+		throw new IndexOutOfBoundsException("I'm failing on purpose.");
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	void exceptionExpected_throwsNoException_testFails() {
+	@Test(expected = IndexOutOfBoundsException.class)
+	void exceptionExpected_throwsNoException_fails() {
 		// do nothing
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	void exceptionExpected_throwsException_testPasses() {
-		throw new IllegalArgumentException();
+	@Test(expected = IndexOutOfBoundsException.class)
+	void exceptionExpected_throwsException_passes() {
+		throw new IndexOutOfBoundsException("I'm failing on purpose.");
 	}
 
 }

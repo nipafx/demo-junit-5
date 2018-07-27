@@ -4,6 +4,7 @@ import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.BeforeTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
+import org.opentest4j.AssertionFailedError;
 
 import java.util.Optional;
 
@@ -34,7 +35,7 @@ class TimeoutExtension implements BeforeTestExecutionCallback, AfterTestExecutio
 			String message = format(
 					"Test '%s' was supposed to run no longer than %d ms but ran %d ms.",
 					context.getDisplayName(), timeout, elapsedTime);
-			throw new IllegalStateException(message);
+			throw new AssertionFailedError(message, timeout, elapsedTime);
 		}
 	}
 

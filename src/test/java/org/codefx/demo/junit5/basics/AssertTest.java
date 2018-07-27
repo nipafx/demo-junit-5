@@ -46,7 +46,7 @@ class AssertTest {
 	}
 
 	@Test
-	void assertAllProperties_testFails() {
+	void assertAllProperties_fails() {
 		Address address = new Address("New City", "Some Street", "No");
 
 		assertAll("address",
@@ -59,11 +59,11 @@ class AssertTest {
 	@Test
 	void assertExceptions_pass() {
 		Exception exception = assertThrows(Exception.class, this::throwing);
-		assertEquals("Because I can!", exception.getMessage());
+		assertEquals("I'm failing on purpose.", exception.getMessage());
 	}
 
-	private void throwing() throws Exception {
-		throw new RuntimeException("Because I can!");
+	private void throwing() {
+		throw new IndexOutOfBoundsException("I'm failing on purpose.");
 	}
 
 	private static class Address {
