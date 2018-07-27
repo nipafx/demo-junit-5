@@ -4,10 +4,8 @@ import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeTestExecutionCallback;
-import org.junit.jupiter.api.extension.ContainerExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
-import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import static java.lang.System.currentTimeMillis;
 import static java.util.Collections.singletonMap;
@@ -21,7 +19,7 @@ class BenchmarkExtension
 	// EXTENSION POINTS
 
 	@Override
-	public void beforeAll(ContainerExtensionContext context) {
+	public void beforeAll(ExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
 			return;
 
@@ -29,7 +27,7 @@ class BenchmarkExtension
 	}
 
 	@Override
-	public void beforeTestExecution(TestExtensionContext context) {
+	public void beforeTestExecution(ExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
 			return;
 
@@ -37,7 +35,7 @@ class BenchmarkExtension
 	}
 
 	@Override
-	public void afterTestExecution(TestExtensionContext context) {
+	public void afterTestExecution(ExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
 			return;
 
@@ -47,7 +45,7 @@ class BenchmarkExtension
 	}
 
 	@Override
-	public void afterAll(ContainerExtensionContext context) {
+	public void afterAll(ExtensionContext context) {
 		if (!shouldBeBenchmarked(context))
 			return;
 

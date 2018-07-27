@@ -6,7 +6,6 @@ import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
-import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import java.util.Map;
 import java.util.Optional;
@@ -18,7 +17,7 @@ public class RandomProvider implements ParameterResolver, TestExecutionException
 	private static final Namespace NAMESPACE = Namespace.create("org", "codefx", "RandomProvider");
 
 	@Override
-	public boolean supports(
+	public boolean supportsParameter(
 			ParameterContext parameterContext, ExtensionContext extensionContext)
 			throws ParameterResolutionException {
 		Class<?> targetType = parameterContext.getParameter().getType();
@@ -26,7 +25,7 @@ public class RandomProvider implements ParameterResolver, TestExecutionException
 	}
 
 	@Override
-	public Object resolve(
+	public Object resolveParameter(
 			ParameterContext parameterContext, ExtensionContext context)
 			throws ParameterResolutionException {
 		return randomByUniqueId(context)
@@ -42,7 +41,7 @@ public class RandomProvider implements ParameterResolver, TestExecutionException
 
 	@Override
 	public void handleTestExecutionException(
-			TestExtensionContext context, Throwable throwable) throws Throwable {
+			ExtensionContext context, Throwable throwable) throws Throwable {
 		String seed = Optional.ofNullable(randomByUniqueId(context).get(context.getUniqueId()))
 				.map(SeededRandom::seed)
 				.map(s -> "seed " + s)

@@ -6,11 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TimeoutTest {
 
-	@org.junit.jupiter.api.Test
-	void __() {
-		// this is only here so that IntelliJ understands it's a JUnit 5 test class
-	}
-
 	@Test
 	void quickTestWithoutTimeout_testPasses() {
 		assertTrue(true);

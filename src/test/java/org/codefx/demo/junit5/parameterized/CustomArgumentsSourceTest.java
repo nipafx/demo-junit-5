@@ -1,11 +1,10 @@
 package org.codefx.demo.junit5.parameterized;
 
-import org.junit.jupiter.api.extension.ContainerExtensionContext;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.ObjectArrayArguments;
 
 import java.util.Random;
 import java.util.stream.Stream;
@@ -23,10 +22,10 @@ public class CustomArgumentsSourceTest {
 	static class RandomIntegerProvider implements ArgumentsProvider {
 
 		@Override
-		public Stream<? extends Arguments> arguments(ContainerExtensionContext context) {
+		public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
 			return new Random()
 					.ints(0, 10)
-					.mapToObj(ObjectArrayArguments::create)
+					.mapToObj(Arguments::of)
 					.limit(3);
 		}
 

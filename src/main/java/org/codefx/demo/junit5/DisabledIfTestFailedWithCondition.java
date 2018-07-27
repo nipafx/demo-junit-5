@@ -1,18 +1,19 @@
 package org.codefx.demo.junit5;
 
 import org.junit.jupiter.api.extension.ConditionEvaluationResult;
+import org.junit.jupiter.api.extension.ExecutionCondition;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.TestExecutionCondition;
-import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.extension.ConditionEvaluationResult.disabled;
+import static org.junit.jupiter.api.extension.ConditionEvaluationResult.enabled;
 import static org.junit.platform.commons.support.AnnotationSupport.findAnnotation;
 
-public class DisabledIfTestFailedCondition implements TestExecutionCondition {
+public class DisabledIfTestFailedWithCondition implements ExecutionCondition {
 
 	@Override
-	public ConditionEvaluationResult evaluate(TestExtensionContext context) {
+	public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
 		Class<? extends Exception>[] exceptionTypes = context.getTestClass()
 				.flatMap(testClass -> findAnnotation(testClass, DisabledIfTestFailedWith.class))
 				.orElseThrow(() -> new IllegalStateException("The extension should not be executed "
@@ -28,8 +29,8 @@ public class DisabledIfTestFailedCondition implements TestExecutionCondition {
 		return Arrays.stream(exceptions)
 				.filter(ex -> wasThrown(context, ex))
 				.findAny()
-				.map(thrown -> ConditionEvaluationResult.disabled(thrown.getSimpleName() + " was thrown."))
-				.orElseGet(() -> ConditionEvaluationResult.enabled(""));
+				.map(thrown -> disabled(thrown.getSimpleName() + " was thrown."))
+				.orElseGet(() -> enabled(""));
 	}
 
 	private static boolean wasThrown(ExtensionContext context, Class<? extends Exception> exception) {

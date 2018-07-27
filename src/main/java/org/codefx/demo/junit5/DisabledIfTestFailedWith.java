@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @ExtendWith(CollectExceptionExtension.class)
-@ExtendWith(DisabledIfTestFailedCondition.class)
+@ExtendWith(DisabledIfTestFailedWithCondition.class)
 public @interface DisabledIfTestFailedWith {
 
 	Class<? extends Exception>[] value();

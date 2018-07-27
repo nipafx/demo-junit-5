@@ -4,7 +4,6 @@ import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.BeforeTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
-import org.junit.jupiter.api.extension.TestExtensionContext;
 
 import static java.lang.System.currentTimeMillis;
 import static java.util.Collections.singletonMap;
@@ -16,12 +15,12 @@ class SimpleBenchmarkExtension
 	private static final String LAUNCH_TIME_KEY = "LaunchTime";
 
 	@Override
-	public void beforeTestExecution(TestExtensionContext context) {
+	public void beforeTestExecution(ExtensionContext context) {
 		storeNowAsLaunchTime(context);
 	}
 
 	@Override
-	public void afterTestExecution(TestExtensionContext context) {
+	public void afterTestExecution(ExtensionContext context) {
 		long launchTime = loadLaunchTime(context);
 		long elapsedTime = currentTimeMillis() - launchTime;
 		report(context, elapsedTime);

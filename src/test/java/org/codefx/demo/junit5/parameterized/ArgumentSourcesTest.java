@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ObjectArrayArguments;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.concurrent.TimeUnit;
@@ -50,7 +49,7 @@ public class ArgumentSourcesTest {
 	}
 
 	@ParameterizedTest
-	@MethodSource(names = "createWords")
+	@MethodSource("createWords")
 	void withMethodSource(String word) {
 		assertNotNull(word);
 	}
@@ -60,15 +59,15 @@ public class ArgumentSourcesTest {
 	}
 
 	@ParameterizedTest
-	@MethodSource(names = "createWordsWithLength")
+	@MethodSource("createWordsWithLength")
 	void testStringLength(String word, int length) {
 		assertEquals(length, word.length());
 	}
 
 	private static Stream<Arguments> createWordsWithLength() {
 		return Stream.of(
-				ObjectArrayArguments.create("Hello", 5),
-				ObjectArrayArguments.create("JUnit 5", 7));
+				Arguments.of("Hello", 5),
+				Arguments.of("JUnit 5", 7));
 	}
 
 	@ParameterizedTest

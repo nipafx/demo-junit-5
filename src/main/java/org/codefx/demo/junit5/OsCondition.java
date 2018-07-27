@@ -1,10 +1,8 @@
 package org.codefx.demo.junit5;
 
 import org.junit.jupiter.api.extension.ConditionEvaluationResult;
-import org.junit.jupiter.api.extension.ContainerExecutionCondition;
-import org.junit.jupiter.api.extension.ContainerExtensionContext;
-import org.junit.jupiter.api.extension.TestExecutionCondition;
-import org.junit.jupiter.api.extension.TestExtensionContext;
+import org.junit.jupiter.api.extension.ExecutionCondition;
+import org.junit.jupiter.api.extension.ExtensionContext;
 
 import java.lang.reflect.AnnotatedElement;
 import java.util.Arrays;
@@ -12,15 +10,10 @@ import java.util.Optional;
 
 import static org.junit.platform.commons.support.AnnotationSupport.findAnnotation;
 
-public class OsCondition implements ContainerExecutionCondition, TestExecutionCondition {
+public class OsCondition implements ExecutionCondition {
 
 	@Override
-	public ConditionEvaluationResult evaluate(ContainerExtensionContext context) {
-		return evaluateIfAnnotated(context.getElement());
-	}
-
-	@Override
-	public ConditionEvaluationResult evaluate(TestExtensionContext context) {
+	public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
 		return evaluateIfAnnotated(context.getElement());
 	}
 
