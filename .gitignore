@@ -15,6 +15,7 @@ hs_err_pid*
 /bin/
 /out/
 /target/
+/build/
 
 # Eclipse files and folders
 # /.settings keep the settings file for warnings and formatter
@@ -26,7 +27,5 @@ hs_err_pid*
 /.idea-files
 *.iml
 
-# TestNG results
-/test-output
-
-
+# Gradle folder
+/.gradle/

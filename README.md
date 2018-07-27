@@ -5,7 +5,7 @@ Demo project accompanying a series of posts exploring JUnit 5:
 ## First Steps
 
 * [Setup](http://blog.codefx.org/libraries/junit-5-setup/):
-have a look at [`pom.xml`](pom.xml)
+have a look at [`pom.xml`](pom.xml) or [`build.gradle`](build.gradle)
 * [Basics](http://blog.codefx.org/libraries/junit-5-basics/):
 [`LifecycleTest`](src/test/java/org/codefx/demo/junit5/basics/LifecycleTest.java)
 is a good introduction, for more details see the other classes in

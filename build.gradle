@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // for writing tests "testCompile" would suffice, but extensions are
+    // defined in the project's "main" folder, so we need "compile"
+    compile "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
+
+    testCompile('org.assertj:assertj-core:3.10.0')
+    testCompile('org.mockito:mockito-core:2.19.1')
+}
+
+test {
+    useJUnitPlatform()
+}
