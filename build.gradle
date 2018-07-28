@@ -13,6 +13,10 @@ dependencies {
     testCompile "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
     testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
 
+    testCompile "junit:junit:4.12"
+    testCompile "org.junit.jupiter:junit-jupiter-migrationsupport:${junitJupiterVersion}"
+    testRuntime "org.junit.vintage:junit-vintage-engine:${junitJupiterVersion}"
+
     testCompile('org.assertj:assertj-core:3.10.0')
     testCompile('org.mockito:mockito-core:2.19.1')
     testCompile('org.mockito:mockito-junit-jupiter:2.19.1')
@@ -20,4 +24,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }

@@ -37,6 +37,26 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- to demonstrate side-by-side with JUnit 4,
+				let's use it as well-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-migrationsupport</artifactId>
+			<version>${junit-jupiter-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit-jupiter-version}</version>
+		</dependency>
+
 		<!-- other test libraries work out of the box. e.g. ... -->
 		<dependency>
 			<!-- ... AssertJ ... -->
