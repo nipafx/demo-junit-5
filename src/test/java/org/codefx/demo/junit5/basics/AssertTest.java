@@ -66,7 +66,7 @@ class AssertTest {
 		throw new IndexOutOfBoundsException("I'm failing on purpose.");
 	}
 
-	private static class Address {
+	static class Address {
 
 		public final String city;
 		public final String street;

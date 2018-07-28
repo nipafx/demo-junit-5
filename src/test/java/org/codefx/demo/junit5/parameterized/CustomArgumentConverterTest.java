@@ -39,9 +39,7 @@ public class CustomArgumentConverterTest {
 	@Target({ ElementType.ANNOTATION_TYPE, ElementType.PARAMETER })
 	@Retention(RetentionPolicy.RUNTIME)
 	@ConvertWith(PointConverter.class)
-	@interface ConvertPoint {
-
-	}
+	@interface ConvertPoint { }
 
 	static class PointConverter implements ArgumentConverter {
 

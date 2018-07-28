@@ -57,7 +57,7 @@ class PointTest {
 		);
 	}
 
-	private static class PointPointDistance {
+	static class PointPointDistance {
 
 		private final Point p1, p2;
 		private final double distance;
@@ -90,7 +90,7 @@ class PointTest {
 		}
 	}
 
-	private static class Point {
+	static class Point {
 
 		private final int x, y;
 

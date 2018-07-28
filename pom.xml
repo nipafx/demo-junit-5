@@ -21,7 +21,6 @@
 				but extensions are defined in the project's "main" folder, so we need "compile" -->
 			<scope>compile</scope>
 		</dependency>
-
 		<!-- this dependency is needed to create parameterized tests -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -68,8 +67,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>10</source>
+					<target>10</target>
 					<compilerArgs>
 						<arg>-parameters</arg>
 					</compilerArgs>
