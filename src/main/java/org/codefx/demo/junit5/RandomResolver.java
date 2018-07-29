@@ -12,14 +12,16 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class RandomProvider implements ParameterResolver, TestExecutionExceptionHandler {
+public class RandomResolver implements ParameterResolver, TestExecutionExceptionHandler {
 
-	private static final Namespace NAMESPACE = Namespace.create("org", "codefx", "RandomProvider");
+	private static final Namespace NAMESPACE = Namespace.create("org", "codefx", "RandomResolver");
 
 	@Override
 	public boolean supportsParameter(
 			ParameterContext parameterContext, ExtensionContext extensionContext)
 			throws ParameterResolutionException {
+		// don't blindly support a common type like `Random`
+		// instead it should be annotated with `@Randomized` or something
 		Class<?> targetType = parameterContext.getParameter().getType();
 		return targetType == Random.class || targetType == SeededRandom.class;
 	}
@@ -47,6 +49,7 @@ public class RandomProvider implements ParameterResolver, TestExecutionException
 				.map(s -> "seed " + s)
 				.orElse("unknown seed");
 		System.out.println("Exception occurred in test based on " + seed);
+		throw throwable;
 	}
 
 	public static class SeededRandom extends Random {

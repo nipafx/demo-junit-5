@@ -1,7 +1,7 @@
 package org.codefx.demo.junit5.extensions;
 
-import org.codefx.demo.junit5.RandomProvider;
-import org.codefx.demo.junit5.RandomProvider.SeededRandom;
+import org.codefx.demo.junit5.RandomResolver;
+import org.codefx.demo.junit5.RandomResolver.SeededRandom;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(RandomProvider.class)
+@ExtendWith(RandomResolver.class)
 class RandomParameterExtensionTest {
 
 	@BeforeAll
