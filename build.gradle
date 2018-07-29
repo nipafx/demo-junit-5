@@ -26,6 +26,9 @@ test {
     useJUnitPlatform {
         excludeTags 'database'
     }
+//    systemProperties = [
+//            'junit.jupiter.conditions.deactivate': '*'
+//    ]
     testLogging {
         events "passed", "skipped", "failed"
     }
