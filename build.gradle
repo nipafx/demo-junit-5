@@ -23,7 +23,9 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags 'database'
+    }
     testLogging {
         events "passed", "skipped", "failed"
     }
