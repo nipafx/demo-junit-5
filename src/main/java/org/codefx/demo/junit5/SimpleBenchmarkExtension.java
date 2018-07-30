@@ -36,7 +36,7 @@ class SimpleBenchmarkExtension
 
 	private static void report(ExtensionContext context, long elapsedTime) {
 		String message = String.format("Test '%s' took %d ms.", context.getDisplayName(), elapsedTime);
-		context.publishReportEntry(singletonMap("Benchmark", message));
+		context.publishReportEntry("Benchmark", message);
 	}
 
 }

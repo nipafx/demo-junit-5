@@ -24,7 +24,7 @@ public class ArgumentSourcesTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "Hello", "JUnit" })
+	@ValueSource(strings = { "Hello", "Parameterized" })
 	void withOtherParams(String word, TestInfo info, TestReporter reporter) {
 		reporter.publishEntry(info.getDisplayName(), "Word: " + word);
 		assertNotNull(word);
@@ -55,23 +55,23 @@ public class ArgumentSourcesTest {
 	}
 
 	private static Stream<String> createWords() {
-		return Stream.of("Hello", "Junit");
+		return Stream.of("Hello", "Parameterized");
 	}
 
 	@ParameterizedTest
 	@MethodSource("createWordsWithLength")
-	void testStringLength(String word, int length) {
+	void testWordLength(String word, int length) {
 		assertEquals(length, word.length());
 	}
 
 	private static Stream<Arguments> createWordsWithLength() {
 		return Stream.of(
 				Arguments.of("Hello", 5),
-				Arguments.of("JUnit 5", 7));
+				Arguments.of("Parameterized", 13));
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "Hello, 5", "JUnit 5, 7", "'Hello, JUnit 5!', 15" })
+	@CsvSource({ "Hello, 5", "Parameterized, 13", "'Hello, Parameterized!', 21" })
 	void withCsvSource(String word, int length) {
 		assertEquals(length, word.length());
 	}

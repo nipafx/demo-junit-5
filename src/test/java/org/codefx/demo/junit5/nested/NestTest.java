@@ -1,4 +1,4 @@
-package org.codefx.demo.junit5.basics;
+package org.codefx.demo.junit5.nested;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;

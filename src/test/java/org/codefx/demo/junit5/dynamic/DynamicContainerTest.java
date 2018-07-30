@@ -1,4 +1,4 @@
-package org.codefx.demo.junit5;
+package org.codefx.demo.junit5.dynamic;
 
 import org.junit.jupiter.api.DynamicContainer;
 import org.junit.jupiter.api.TestFactory;

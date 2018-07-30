@@ -40,8 +40,8 @@ class BenchmarkExtension
 			return;
 
 		long launchTime = loadLaunchTime(context, LaunchTimeKey.TEST);
-		long runtime = currentTimeMillis() - launchTime;
-		report("Test", context, runtime);
+		long elapsedTime = currentTimeMillis() - launchTime;
+		report("Test", context, elapsedTime);
 	}
 
 	@Override
@@ -72,7 +72,7 @@ class BenchmarkExtension
 
 	private static void report(String unit, ExtensionContext context, long elapsedTime) {
 		String message = String.format("%s '%s' took %d ms.", unit, context.getDisplayName(), elapsedTime);
-		context.publishReportEntry(singletonMap("Benchmark", message));
+		context.publishReportEntry("Benchmark", message);
 	}
 
 	private enum LaunchTimeKey {
