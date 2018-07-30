@@ -2,6 +2,9 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = 10
+targetCompatibility = 10
+
 repositories {
     mavenCentral()
 }
@@ -19,6 +22,7 @@ dependencies {
 
     testCompile('org.assertj:assertj-core:3.10.0')
     testCompile('org.mockito:mockito-core:2.19.1')
+    testCompile('org.junit-pioneer:junit-pioneer:0.1.2')
     testCompile('org.mockito:mockito-junit-jupiter:2.19.1')
 }
 
