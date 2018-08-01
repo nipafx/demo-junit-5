@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
-public class InVariousTests {
+public class CustomInjectionInVariousTests {
 
 	@Test
 	@ExtendWith(RandomIntegerResolver.class)

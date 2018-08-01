@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LambdaTestTest extends LambdaTest {{
 
+	/*
+	 * NOTE: Using the lambda parameter's name as a test name no longer works on Java 9+
+	 *       (see https://bugs.openjdk.java.net/browse/JDK-8138729).
+	 */
+
 	λ(my_first_lambda_test -> {
 		System.out.println("Hi, this is Lambda Test #1");
 		assertTrue(true);

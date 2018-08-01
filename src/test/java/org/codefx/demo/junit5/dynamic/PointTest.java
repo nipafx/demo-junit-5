@@ -13,6 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PointTest {
 
+	/*
+	 * NOTE: In essence, these are parameterized tests and outside of a demo
+	 *       that feature should be used instead for such tests.
+	 */
+
 	void testDistanceComputation(Point p1, Point p2, double distance) {
 		assertEquals(distance, p1.distanceTo(p2));
 	}

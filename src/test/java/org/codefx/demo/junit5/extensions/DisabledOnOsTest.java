@@ -9,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DisabledOnOsTest {
 
+	/*
+	 * NOTE: In the meantime, Jupiter created an official version of this condition
+	 *       and outside of a demo it should be used instead of this implementation.
+	 */
+
 	@Test
 	void runsOnAllOS() {
 		assertTrue(true);
