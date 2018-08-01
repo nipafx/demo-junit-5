@@ -7,6 +7,8 @@ import org.junit.jupiter.params.aggregator.AggregateWith;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.aggregator.ArgumentsAggregationException;
 import org.junit.jupiter.params.aggregator.ArgumentsAggregator;
+import org.junit.jupiter.params.converter.ArgumentConversionException;
+import org.junit.jupiter.params.converter.ArgumentConverter;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.lang.annotation.ElementType;
@@ -15,6 +17,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ArgumentAggregatorTest {
 
@@ -43,6 +46,30 @@ class ArgumentAggregatorTest {
 				ArgumentsAccessor arguments, ParameterContext context) throws ArgumentsAggregationException {
 			return Point.from(arguments.getDouble(1), arguments.getDouble(2));
 		}
+
+	}
+
+	@ParameterizedTest
+	@CsvSource({ "0" })
+	void testNoFactoryAccess_errors(ArgumentsAccessor arguments) {
+		// would be nice to pass NoFactoryConverter...
+		NoFactory nope = arguments.get(0, NoFactory.class);
+		assertNotNull(nope);
+	}
+
+	static class NoFactoryConverter implements ArgumentConverter {
+
+		@Override
+		public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
+			if (source instanceof String)
+				return new NoFactory(Integer.parseInt((String) source));
+			throw new ArgumentConversionException(source + " could not be converted.");
+		}
+	}
+
+	static class NoFactory {
+
+		NoFactory(int __) { }
 
 	}
 
