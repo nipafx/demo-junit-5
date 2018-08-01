@@ -8,33 +8,27 @@ class NameTest {
 
 	@ParameterizedTest
 	@CsvSource({ "One, 1", "Two, 2" })
-	void testDefault(String word, int number) {
-	}
+	void testDefault(String word, int number) { }
 
 	@ParameterizedTest(name = "run #{index} with [{arguments}]")
 	@CsvSource({ "One, 1", "Two, 2" })
-	void testVerbose(String word, int number) {
-	}
+	void testVerbose(String word, int number) { }
 
 	@ParameterizedTest(name = "{index}")
 	@CsvSource({ "One, 1", "Two, 2" })
-	void testIndex(String word, int number) {
-	}
+	void testIndex(String word, int number) { }
 
 	@ParameterizedTest(name = "{0}: {1}")
 	@CsvSource({ "One, 1", "Two, 2" })
-	void testSpecificArguments(String word, int number) {
-	}
+	void testSpecificArguments(String word, int number) { }
 
 	@ParameterizedTest(name = "{arguments}")
 	@CsvSource({ "One, 1", "Two, 2" })
-	void testAllArguments(String word, int number) {
-	}
+	void testAllArguments(String word, int number) { }
 
 	@DisplayName("Roman numeral")
 	@ParameterizedTest(name = "\"{0}\" should be {1}")
 	@CsvSource({ "I, 1", "II, 2", "V, 5" })
-	void testWithDisplayName(String word, int number) {
-	}
+	void testWithDisplayName(String roman, int arabic) { }
 
 }

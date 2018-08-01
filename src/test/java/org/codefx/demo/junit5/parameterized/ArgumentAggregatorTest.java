@@ -1,7 +1,6 @@
 package org.codefx.demo.junit5.parameterized;
 
 import org.codefx.demo.junit5.parameterized.CustomArgumentConverterTest.Point;
-import org.codefx.demo.junit5.parameterized.CustomArgumentConverterTest.PointConverter;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
