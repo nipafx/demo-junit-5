@@ -11,7 +11,7 @@ class LambdaTestTest extends LambdaTest {{
 	 *       (see https://bugs.openjdk.java.net/browse/JDK-8138729).
 	 */
 
-	λ(my_first_lambda_test -> {
+	λ("My first lambda test", () -> {
 		System.out.println("Hi, this is Lambda Test #1");
 		assertTrue(true);
 	});

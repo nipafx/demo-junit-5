@@ -2,6 +2,7 @@ package org.codefx.demo.junit5;
 
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.api.function.Executable;
 
 import java.io.Serializable;
 import java.lang.invoke.SerializedLambda;
@@ -14,14 +15,19 @@ import java.util.Objects;
 import static java.lang.Character.toUpperCase;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class LambdaTest {
 
 	private final List<DynamicTest> registeredTests = new ArrayList<>();
 
+	protected void λ(String displayName, Executable test) {
+		registeredTests.add(dynamicTest(displayName, test));
+	}
+
 	protected void λ(NamedTest test) {
-		String testDisplayName = test.prettyName();
-		registeredTests.add(DynamicTest.dynamicTest(testDisplayName, () -> test.execute(testDisplayName)));
+		String displayName = test.prettyName();
+		registeredTests.add(dynamicTest(displayName, () -> test.execute(displayName)));
 	}
 
 	@TestFactory
@@ -93,8 +99,8 @@ public class LambdaTest {
 		default String checkParameterNamesEnabled(String name) {
 			if ("arg0".equals(name)) {
 				throw new IllegalStateException(
-						"You need to compile with javac -parameters for parameter reflection to work."
-								+ "You also need java 8u60 or newer to use it with lambdas.");
+						"You need to compile with javac (at least 8u60 but before 9)"
+								+ " with the option -parameters for parameter reflection to work.");
 			}
 			return name;
 		}
