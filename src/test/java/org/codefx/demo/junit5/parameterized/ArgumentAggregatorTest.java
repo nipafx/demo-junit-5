@@ -1,6 +1,7 @@
 package org.codefx.demo.junit5.parameterized;
 
 import org.codefx.demo.junit5.parameterized.CustomArgumentConverterTest.Point;
+import org.junit.jupiter.api.TestReporter;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
@@ -16,6 +17,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -26,6 +28,14 @@ class ArgumentAggregatorTest {
 	void testPointNorm(double norm, ArgumentsAccessor arguments) {
 		Point point = Point.from(arguments.getDouble(1), arguments.getDouble(2));
 		assertEquals(norm, point.norm(), 0.01);
+	}
+
+	@ParameterizedTest
+	@CsvSource({ "0, 0, 0", "1, 0, 1", "1, 1, 0", "1.414, 1, 1", "2.236, 2, 1" })
+	// without ArgumentsAccessor in there, this leads to a ParameterResolutionException
+	void testEatingArguments(double norm, ArgumentsAccessor arguments, TestReporter reporter) {
+		reporter.publishEntry("norm", norm + "");
+		assertThat(norm).isNotNegative();
 	}
 
 	@ParameterizedTest
