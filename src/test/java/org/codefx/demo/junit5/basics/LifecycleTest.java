@@ -1,5 +1,7 @@
 package org.codefx.demo.junit5.basics;
 
+import org.codefx.demo.junit5.DisabledOnOs;
+import org.codefx.demo.junit5.OS;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class LifecycleTest {
@@ -41,6 +44,12 @@ class LifecycleTest {
 	@Disabled
 	void disabledTest() {
 		System.exit(1);
+	}
+
+	@Test
+	@DisabledOnOs(OS.NIX)
+	void disabledNixTest() {
+		fail("Only runs on Unix/Linux");
 	}
 
 	@AfterEach
