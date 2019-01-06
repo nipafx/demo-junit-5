@@ -10,8 +10,26 @@ import java.util.stream.Stream;
 import static java.lang.Math.sqrt;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import static org.junit.jupiter.api.DynamicTest.stream;
 
 class PointTest {
+
+	@TestFactory
+	List<DynamicTest> testPointsDynamically() {
+		return List.of(
+				dynamicTest(
+						"A Great Test For Point",
+						() -> {
+							// test code
+						}),
+				dynamicTest(
+						"Another Great Test For Point",
+						() -> {
+							// test code
+						})
+		);
+	}
 
 	/*
 	 * NOTE: In essence, these are parameterized tests and outside of a demo
@@ -35,7 +53,7 @@ class PointTest {
 	Stream<DynamicTest> testDistanceComputations_testFactory1() {
 		List<PointPointDistance> testData = createTestData();
 		return testData.stream()
-				.map(datum -> DynamicTest.dynamicTest(
+				.map(datum -> dynamicTest(
 						"Testing " + datum,
 						() -> testDistanceComputation(
 								datum.point1(), datum.point2(), datum.distance()
@@ -44,7 +62,7 @@ class PointTest {
 
 	@TestFactory
 	Stream<DynamicTest> testDistanceComputations_testFactory2() {
-		return DynamicTest.stream(
+		return stream(
 				createTestData().iterator(),
 				datum -> "Testing " + datum,
 				datum -> testDistanceComputation(

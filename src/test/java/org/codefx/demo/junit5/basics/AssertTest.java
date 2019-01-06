@@ -62,9 +62,9 @@ class AssertTest {
 
 	static class Address {
 
-		public final String city;
-		public final String street;
-		public final String number;
+		final String city;
+		final String street;
+		final String number;
 
 		private Address(String city, String street, String number) {
 			this.city = city;
