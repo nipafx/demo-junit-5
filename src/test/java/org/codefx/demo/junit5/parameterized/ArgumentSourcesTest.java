@@ -4,6 +4,7 @@ import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestReporter;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -73,6 +74,12 @@ public class ArgumentSourcesTest {
 	@ParameterizedTest
 	@CsvSource({ "Hello, 5", "Parameterized, 13", "'Hello, Parameterized!', 21" })
 	void withCsvSource(String word, int length) {
+		assertEquals(length, word.length());
+	}
+
+	@ParameterizedTest
+	@CsvFileSource(resources = "/word-lengths.csv")
+	void withCsvFileSource(String word, int length) {
 		assertEquals(length, word.length());
 	}
 
