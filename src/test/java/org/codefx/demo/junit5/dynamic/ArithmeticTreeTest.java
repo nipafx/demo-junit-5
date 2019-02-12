@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 class ArithmeticTreeTest {
 
 	@TestFactory
-	Stream<DynamicNode> testArithmeticTree() {
+	DynamicNode testArithmeticTree() {
 		return generateTestPlan(ArithmeticTreeTestData.generate());
 	}
 
 	@TestFactory
-	Stream<DynamicNode> testRandomArithmeticTree() {
+	DynamicNode testRandomArithmeticTree() {
 		return generateTestPlan(ArithmeticTreeTestData.generateRandom());
 	}
 
@@ -29,8 +29,8 @@ class ArithmeticTreeTest {
 	 * Below you find the generation of a test plan from the arithmetic tree.
 	 */
 
-	private Stream<DynamicNode> generateTestPlan(ArithmeticTreeTestData treeTestData) {
-		return Stream.of(generateTestTreeFor(treeTestData.tree(), treeTestData));
+	private DynamicNode generateTestPlan(ArithmeticTreeTestData treeTestData) {
+		return generateTestTreeFor(treeTestData.tree(), treeTestData);
 	}
 
 	private static DynamicNode generateTestTreeFor(

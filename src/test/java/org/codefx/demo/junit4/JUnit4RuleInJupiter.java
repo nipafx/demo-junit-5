@@ -18,7 +18,7 @@ class JUnit4RuleInJupiter {
 		List<Object> list = List.of();
 
 		thrown.expect(IndexOutOfBoundsException.class);
-		thrown.expectMessage("Index 0 out-of-bounds for length 0");
+		thrown.expectMessage("Index 0 out of bounds for length 0");
 		// this call fails
 		list.get(0);
 	}
