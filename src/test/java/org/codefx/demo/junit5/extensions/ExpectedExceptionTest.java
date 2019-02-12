@@ -5,7 +5,7 @@ import org.codefx.demo.junit5.Test;
 class ExpectedExceptionTest {
 
 	@Test
-	void noExceptionExpected_throwsNoException_passes() {
+	void noExceptionExpected_throwsNoException() {
 		// do nothing
 	}
 
@@ -20,7 +20,7 @@ class ExpectedExceptionTest {
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
-	void exceptionExpected_throwsException_passes() {
+	void exceptionExpected_throwsException() {
 		throw new IndexOutOfBoundsException("I'm failing on purpose.");
 	}
 

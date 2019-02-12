@@ -41,7 +41,7 @@ class ArithmeticTreeTest {
 		else {
 			var testsForChildren = generateTestsFor(arithmeticNode.operands(), treeTestData);
 			var expected = treeTestData.resultFor(arithmeticNode);
-			var testName = arithmeticNode + " should evaluate to " + expected;
+			var testName = arithmeticNode + " should evaluate to " + expected + " (ops '+3' and '*10' fail)";
 			return dynamicContainer(testName, concat(of(testForNode), testsForChildren));
 		}
 	}

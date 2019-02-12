@@ -7,17 +7,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TimeoutTest {
 
 	@Test
-	void quickTestWithoutTimeout_testPasses() {
+	void quickTestWithoutTimeout() {
 		assertTrue(true);
 	}
 
 	@Test(timeout = 0)
-	void quickTestWithoutZeroTimeout_testPasses() {
+	void quickTestWithoutZeroTimeout() {
 		assertTrue(true);
 	}
 
 	@Test(timeout = 10_000)
-	void quickTestWithoutVeryLargeTimeout_testPasses() {
+	void quickTestWithoutVeryLargeTimeout() {
 		assertTrue(true);
 	}
 

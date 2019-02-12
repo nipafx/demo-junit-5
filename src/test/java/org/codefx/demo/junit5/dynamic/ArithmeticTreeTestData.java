@@ -73,8 +73,6 @@ class ArithmeticTreeTestData {
 	}
 
 	private static ArithmeticNode[] pickRandomNodes(List<ArithmeticNode> nodes, Random random) {
-
-
 		return IntStream.range(0, random.nextInt(3) + 2)
 				// compute a random index
 				.map(n -> random.nextInt(nodes.size()))

@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 class AssertTest {
 
 	@Test
-	void assertWithBoolean_pass() {
+	void assertWithBoolean() {
 		assertTrue(true);
 		assertTrue(this::truism);
 
@@ -33,7 +33,7 @@ class AssertTest {
 	}
 
 	@Test
-	void assertWithComparison_pass() {
+	void assertWithComparison() {
 		List<String> expected = asList("element");
 		List<String> actual = new LinkedList<>(expected);
 
@@ -74,7 +74,7 @@ class AssertTest {
 	}
 
 	@Test
-	void assertExceptions_pass() {
+	void assertExceptions() {
 		Exception exception = assertThrows(Exception.class, this::throwing);
 		assertEquals("I'm failing on purpose.", exception.getMessage());
 	}
