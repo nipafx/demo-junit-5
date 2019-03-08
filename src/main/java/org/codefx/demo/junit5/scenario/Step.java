@@ -12,15 +12,8 @@ import java.lang.annotation.Target;
 @Test
 public @interface Step {
 
-	/*
-	 * TODO: also define "after"
-	 *
-	 *   @Step(after = "foo")
-	 *   void bar() {
-	 *       // ... test
-	 *   }
-	 */
+	String[] after() default { };
 
-	String[] next() default { "" };
+	String[] next() default { };
 
 }

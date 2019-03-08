@@ -54,12 +54,20 @@ public class StepMethodOrderer implements MethodOrderer, TestExecutionExceptionH
 					testMethod
 							.findAnnotation(Step.class).stream()
 							.flatMap(step -> Stream.of(step.next()))
+							// TODO: filter seems unnecessary because by default `next` is empty
 							.filter(not(String::isEmpty))
 							.forEach(nextTestName -> nextEdges
 									.computeIfAbsent(testName, __ -> new HashSet<>())
 									.add(nextTestName));
+					testMethod
+							.findAnnotation(Step.class).stream()
+							.flatMap(step -> Stream.of(step.after()))
+							// TODO: filter seems unnecessary because by default `after` is empty
+							.filter(not(String::isEmpty))
+							.forEach(beforeTestName -> nextEdges
+									.computeIfAbsent(beforeTestName, __ -> new HashSet<>())
+									.add(testName));
 				});
-		System.out.println(nextEdges);
 		nextEdges.forEach((testMethodName, nextTestNames) -> {
 			nextTestNames.stream()
 					// TODO: handle missing nodes, which come from wrong "next" attribute values
