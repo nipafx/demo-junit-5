@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -27,12 +28,13 @@ import static java.util.stream.Collectors.toList;
 public class StepMethodOrderer implements MethodOrderer, TestExecutionExceptionHandler, ExecutionCondition {
 
 	// TODO: use extension context to save state
-	private boolean somethingFailed = false;
+	private static Collection<DirectedNode> executionOrder;
+	private Collection<DirectedNode> failedTests = new HashSet<>();
 
 	@Override
 	public void orderMethods(MethodOrdererContext context) {
-		Collection<DirectedNode> tests = directedTests(context);
-		List<MethodDescriptor> orderedTests = topologicalSort(tests).stream()
+		executionOrder = directedTests(context);
+		List<MethodDescriptor> orderedTests = topologicalSort(executionOrder).stream()
 				.map(DirectedNode::testMethod)
 				.collect(toList());
 		context.getMethodDescriptors().sort(Comparator.comparing(orderedTests::indexOf));
@@ -151,15 +153,30 @@ public class StepMethodOrderer implements MethodOrderer, TestExecutionExceptionH
 
 	@Override
 	public void handleTestExecutionException(ExtensionContext context, Throwable throwable) throws Throwable {
-		somethingFailed = true;
+		String testName = context.getRequiredTestMethod().getName();
+		DirectedNode testNode = executionOrder.stream()
+				.filter(node -> node.testMethod().getMethod().getName().equals(testName))
+				// TODO: write proper error messages
+				.reduce((__, ___) -> {
+					throw new IllegalArgumentException("");
+				})
+				.orElseThrow(IllegalArgumentException::new);
+		failedTests.add(testNode);
 		throw throwable;
 	}
 
 	@Override
-	public ConditionEvaluationResult evaluateExecutionCondition(
-			ExtensionContext context) {
-		// TODO only deactivate tests that are in the subtree below the failed test
-		return somethingFailed
+	public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
+		if (failedTests.isEmpty())
+			return ConditionEvaluationResult.enabled("");
+
+		boolean testIsDescendantOfFailedTest = failedTests.stream()
+				.flatMap(DirectedNode::descendants)
+				.anyMatch(node -> Objects.equals(
+						node.testMethod().getMethod().getName(),
+						context.getRequiredTestMethod().getName()));
+
+		return testIsDescendantOfFailedTest
 				? ConditionEvaluationResult.disabled("An earlier scenario test failed")
 				: ConditionEvaluationResult.enabled("");
 	}
@@ -176,6 +193,13 @@ public class StepMethodOrderer implements MethodOrderer, TestExecutionExceptionH
 
 		public Set<DirectedNode> children() {
 			return children;
+		}
+
+		public Stream<DirectedNode> descendants() {
+			return Stream.concat(
+					Stream.of(this),
+					children.stream().flatMap(DirectedNode::descendants)
+			);
 		}
 
 		public MethodDescriptor testMethod() {
